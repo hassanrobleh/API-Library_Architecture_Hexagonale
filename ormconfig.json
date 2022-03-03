@@ -1,0 +1,18 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "root",
+    "database": "library_v2",
+    "synchronize": true,
+    "logging": false,
+    "entities": ["src/infrastructure/models/**/*.ts"],
+    "migrations": ["src/infrastructure/migration/**/*.ts"],
+    "subscribers": ["src/infrastructure/subscriber/**/*.ts"],
+    "cli": {
+        "entitiesDir": "src/infra/typeorm/models",
+        "migrationsDir": "src/infra/migration",
+        "subscribersDir": "src/infra/subscriber"
+    }
+}
