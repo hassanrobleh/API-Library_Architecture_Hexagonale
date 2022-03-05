@@ -1,8 +1,19 @@
-import "reflect-metadata";
-import { createConnection } from "typeorm";
-import { Book } from "./infrastructure/typeorm/models/Book";
+import 'reflect-metadata'
+import { createConnection } from 'typeorm'
+import express from 'express'
+import { App } from './app'
 
-createConnection().then(connection => {
-    // here you can start to work with your entities
+createConnection()
+    .then(async (conn) => {
+        await conn.runMigrations()
 
-}).catch(err => console.log(err))
+        const app = express()
+        const PORT = 3000
+
+        App(app)
+
+        app.listen(PORT, () => {
+            console.log(`Server: Server is running at http://localhost:${PORT}`)
+        })
+    })
+    .catch((err) => console.log(err))

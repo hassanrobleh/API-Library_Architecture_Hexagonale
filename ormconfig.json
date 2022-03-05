@@ -11,8 +11,8 @@
     "migrations": ["src/infrastructure/migration/**/*.ts"],
     "subscribers": ["src/infrastructure/subscriber/**/*.ts"],
     "cli": {
-        "entitiesDir": "src/infra/typeorm/models",
-        "migrationsDir": "src/infra/migration",
-        "subscribersDir": "src/infra/subscriber"
+        "entitiesDir": "src/infrastructure/typeorm/models",
+        "migrationsDir": "src/infrastructure/migration",
+        "subscribersDir": "src/infrastructure/subscriber"
     }
 }

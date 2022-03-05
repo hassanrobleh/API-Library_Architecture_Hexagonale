@@ -1,13 +1,14 @@
-import express from 'express'
+import * as express from 'express'
+import cors from 'cors'
+// import carRoutes from './routes/carRoutes';
+// import userRoutes from './routes/userRoute';
 
-const app = express()
+export const App = async (app) => {
+    app.use(cors())
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: false }))
 
-const PORT = 3000
-
-app.get('/', (req, res) => {
-    res.send("ok")
-})
-
-app.listen(PORT, () => {
-    console.log(`Server: Server is running at http://localhost:${PORT}`)
-})
+    app.get('/', (req, res) => {
+        res.send('ok')
+    })
+}
