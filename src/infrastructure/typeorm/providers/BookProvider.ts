@@ -6,6 +6,7 @@ import { validate } from 'class-validator'
 
 export class BookProvider implements IBookRepository {
     
+    
     async addBook(book: Book) {
         const newBook = getRepository(Book).create(book)
 
