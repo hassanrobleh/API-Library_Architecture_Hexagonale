@@ -25,6 +25,4 @@ export class User {
 
   @OneToMany(() => Book, book => book.user,  {nullable: false})
   books: Book[];
-
-  
 }

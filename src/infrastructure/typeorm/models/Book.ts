@@ -3,9 +3,11 @@ import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    OneToMany,
+    ManyToOne,
     JoinColumn,
 } from 'typeorm'
+import { Category } from './Category';
+import { User } from './User'
 
 @Entity()
 export class Book {
@@ -40,7 +42,9 @@ export class Book {
     @IsString()
     approved: number
 
-    @Column()
-    @IsInt()
-    user: number
+    @ManyToOne(() => User, user => user.books)
+    user: User;
+
+    @ManyToOne(() => Category, category => category.books)
+    category: Category;
 }
