@@ -8,14 +8,15 @@ export interface IBook {
     imageUrl: string
     fileUrl: string
     approved: string
-    available: boolean
+    // available: boolean
     createdAt?: Date;
     updatedAt?: Date;
+    user: number
 }
 
 export class Book implements IBook{
     id?: number
-    available: boolean
+    // available: boolean
     constructor(
         readonly name: string,
         readonly description: string,
@@ -24,14 +25,15 @@ export class Book implements IBook{
         readonly imageUrl: string,
         readonly fileUrl: string,
         readonly approved: string,
+        readonly user: number,
         )
     {
-        this.available = true
+        // this.available = true
     }
 
-    changeAvailable(b: boolean) {
-        if(this.available) {
-            this.available = b
-        }
-    }
+    // changeAvailable(b: boolean) {
+    //     if(this.available) {
+    //         this.available = b
+    //     }
+    // }
 } 
