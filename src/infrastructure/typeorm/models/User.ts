@@ -23,6 +23,6 @@ export class User {
   @IsString()
   lastName: string;
 
-  @OneToMany(() => Book, book => book.user,  {nullable: false})
-  books: Book[];
+  // @OneToMany(() => Book, book => book.user,  {nullable: false})
+  // books: Book[];
 }

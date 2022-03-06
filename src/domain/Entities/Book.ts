@@ -1,4 +1,3 @@
-
 export interface IBook {
     id?: number
     name: string
@@ -9,12 +8,12 @@ export interface IBook {
     fileUrl: string
     approved: string
     // available: boolean
-    createdAt?: Date;
-    updatedAt?: Date;
-    user: number
+    createdAt?: Date
+    updatedAt?: Date
+    user?: number
 }
 
-export class Book implements IBook{
+export class Book implements IBook {
     id?: number
     // available: boolean
     constructor(
@@ -24,10 +23,8 @@ export class Book implements IBook{
         readonly releaseAt: string,
         readonly imageUrl: string,
         readonly fileUrl: string,
-        readonly approved: string,
-        readonly user: number,
-        )
-    {
+        readonly approved: string
+    ) {
         // this.available = true
     }
 
@@ -36,4 +33,4 @@ export class Book implements IBook{
     //         this.available = b
     //     }
     // }
-} 
+}

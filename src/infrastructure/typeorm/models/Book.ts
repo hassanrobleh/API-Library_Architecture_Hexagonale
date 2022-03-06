@@ -42,9 +42,9 @@ export class Book {
     @IsString()
     approved: number
 
-    @ManyToOne(() => User, user => user.books)
-    user: User;
+    // @ManyToOne(() => User, user => user.books)
+    // user: User;
 
-    @ManyToOne(() => Category, category => category.books)
-    category: Category;
+    // @ManyToOne(() => Category, category => category.books)
+    // category: Category;
 }

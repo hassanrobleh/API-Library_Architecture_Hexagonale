@@ -9,7 +9,7 @@
     "logging": false,
     "entities": ["src/infrastructure/typeorm/models/**/*.ts"],
     "migrations": ["src/infrastructure/migration/**/*.ts"],
-    "subscribers": ["src/infrastructure/subscriber/**/*.ts"],
+    "subscribers": ["src/infrastructure/subscribers/**/*.ts"],
     "cli": {
         "entitiesDir": "src/infrastructure/typeorm/models",
         "migrationsDir": "src/infrastructure/migration",

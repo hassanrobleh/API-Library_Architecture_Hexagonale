@@ -20,9 +20,11 @@ export class AddBook {
                 request.approved
             )
 
-            await this.repository.add(book)
-
+            await this.repository.addBook(book)
             response.message = 'Le book a bien été ajouté'
+            return response
+
+            
         } catch (error: any) {
             throw new Error(error)
         }

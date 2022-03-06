@@ -13,7 +13,7 @@ export class Category {
     @Column()
     description: string
 
-    @OneToMany(() => Book, book => book.category,  {nullable: false})
-    books: Book[];
+    // @OneToMany(() => Book, book => book.category,  {nullable: false})
+    // books: Book[];
 
 }
