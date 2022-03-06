@@ -1,9 +1,9 @@
 import { ValidationError } from 'class-validator';
-import { BookDTO, IBook } from '../Entities/Book';
+import { User } from '../Entities/User';
 
-export interface IBookRepository {
+export interface IUserRepository {
 
-    addBook(book: IBook): Promise<string | ValidationError[]>
+    addUser(user: User): Promise<string | ValidationError[]>
     // getBook(id: number): Promise<Book>
     // getBooks()
     // updateBooks()

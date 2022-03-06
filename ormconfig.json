@@ -4,12 +4,14 @@
     "port": 3306,
     "username": "root",
     "password": "root",
-    "database": "libra",
+    "database": "biblio",
     "synchronize": true,
     "logging": false,
+
     "entities": ["src/infrastructure/typeorm/models/**/*.ts"],
     "migrations": ["src/infrastructure/migration/**/*.ts"],
     "subscribers": ["src/infrastructure/subscribers/**/*.ts"],
+
     "cli": {
         "entitiesDir": "src/infrastructure/typeorm/models",
         "migrationsDir": "src/infrastructure/migration",

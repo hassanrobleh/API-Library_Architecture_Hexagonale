@@ -1,16 +1,11 @@
-import {  IsInt, IsString } from 'class-validator'
-import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    ManyToOne,
-    JoinColumn,
-} from 'typeorm'
-import { Category } from './Category';
-import { User } from './User'
+import { IsInt, IsString } from "class-validator";
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import { Category } from "./Category";
+import { User } from "./User";
 
 @Entity()
 export class Book {
+
     @PrimaryGeneratedColumn()
     id: number
 
@@ -39,12 +34,20 @@ export class Book {
     fileUrl: string
 
     @Column()
-    @IsString()
+    @IsInt()
     approved: number
 
-    // @ManyToOne(() => User, user => user.books)
-    // user: User;
+    @Column()
+    @IsInt()
+    userId: number
 
-    // @ManyToOne(() => Category, category => category.books)
-    // category: Category;
+    @Column()
+    @IsInt()
+    categoryId: number
+
+    @ManyToOne(() => User, user => user.books)
+    user: User;
+
+    @ManyToOne(() => Category, category => category.books)
+    category: Category;
 }

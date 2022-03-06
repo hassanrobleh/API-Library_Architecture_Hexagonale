@@ -1,21 +1,16 @@
 export interface IBook {
-    id?: number
     name: string
     description: string
     author: string
     releaseAt: string
     imageUrl: string
     fileUrl: string
-    approved: string
-    // available: boolean
-    createdAt?: Date
-    updatedAt?: Date
-    user?: number
+    approved: number
+    userId: number
+    categoryId: number
 }
 
-export class Book implements IBook {
-    id?: number
-    // available: boolean
+export class BookDTO implements IBook {
     constructor(
         readonly name: string,
         readonly description: string,
@@ -23,14 +18,8 @@ export class Book implements IBook {
         readonly releaseAt: string,
         readonly imageUrl: string,
         readonly fileUrl: string,
-        readonly approved: string
-    ) {
-        // this.available = true
-    }
-
-    // changeAvailable(b: boolean) {
-    //     if(this.available) {
-    //         this.available = b
-    //     }
-    // }
+        readonly approved: number,
+        readonly userId: number,
+        readonly categoryId: number
+    ) {}
 }

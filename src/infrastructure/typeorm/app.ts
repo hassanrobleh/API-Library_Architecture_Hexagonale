@@ -1,6 +1,6 @@
-import * as express from 'express';
-import  cors from 'cors';
-import routes from './routes'
+// import * as express from 'express';
+// import  cors from 'cors';
+// import routes from './routes'
 // import carRoutes from './routes/carRoutes';
 // import userRoutes from './routes/userRoute';
 // import router from './routes/index';
@@ -16,8 +16,8 @@ import routes from './routes'
 //     // })
 // }
 
-export const expressApp = async (app) => {
-    app.use(express.json())
-    app.use(cors())
-    app.use(routes)
-}
+// export const expressApp = async (app) => {
+//     app.use(express.json())
+//     app.use(cors())
+//     app.use(routes)
+// }

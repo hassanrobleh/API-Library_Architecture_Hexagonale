@@ -6,6 +6,8 @@ export class AddBookRequest {
         readonly releaseAt: string,
         readonly imageUrl: string,
         readonly fileUrl: string,
-        readonly approved: string
+        readonly approved: string,
+        readonly user: number,
+        readonly category: number
     ) {}
 }

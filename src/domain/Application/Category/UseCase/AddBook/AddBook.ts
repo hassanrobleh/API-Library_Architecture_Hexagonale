@@ -4,6 +4,7 @@ import { AddBookRequest } from './AddBookRequest'
 import { AddBookResponse } from './AddBookResponse'
 
 export class AddBook {
+    
     constructor(private repository: IBookRepository) {}
 
     async execute(request: AddBookRequest) {
@@ -17,7 +18,9 @@ export class AddBook {
                 request.releaseAt,
                 request.imageUrl,
                 request.fileUrl,
-                request.approved
+                request.approved,
+                request.user,
+                request.category
             )
 
             await this.repository.addBook(book)
