@@ -7,8 +7,9 @@ export class AddBook {
 
     async execute(request: IBook) {
         try {
-            const response = new AddBookResponse()
 
+            const response = new AddBookResponse()
+            
             const book = new BookDTO(
                 request.name,
                 request.description,

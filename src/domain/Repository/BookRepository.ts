@@ -8,5 +8,4 @@ export interface IBookRepository {
     // getBooks()
     // updateBooks()
     // deletebook()
-
 }

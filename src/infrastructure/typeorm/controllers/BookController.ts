@@ -4,18 +4,15 @@ import { BookProvider } from "../providers/BookProvider";
 
 // export class BookController {
 
-    const provider: BookProvider = new BookProvider()
+    // const provider: BookProvider = new BookProvider()
 
     export const createBook =  async (req: Request, res: Response, next: NextFunction) => {
         const body = req.body
-
-        // console.log(" controller ", body)
-
         try {
             // const result = await provider.addBook(body)
             const result = await addBookAdapter.execute(body)
-
             return res.status(201).send(result)
+            
         } catch (error) {
             console.log(error)
         }
