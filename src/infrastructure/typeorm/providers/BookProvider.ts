@@ -5,7 +5,6 @@ import { validate } from 'class-validator'
 import { BookDTO } from '../../../domain/Entities/Book'
 
 export class BookProvider implements IBookRepository {
-    
     async addBook(book: BookDTO) {
         try {
             const newBook = getRepository(Book).create(book)
@@ -16,9 +15,37 @@ export class BookProvider implements IBookRepository {
                 await getRepository(Book).save(newBook)
                 return 'new book'
             }
-            
         } catch (error) {
             console.log(error)
         }
+    }
+
+    async getBook(id: number) {
+        try {
+
+            const book = await getRepository(Book).findOne(id)
+            console.log(book)
+            
+            if (book) {
+                return book
+            }
+            return book
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
+    async getBooks(name?: string | object) {
+
+        try {
+
+            const allBook = await getRepository(Book).find()
+
+            return allBook
+            
+        } catch (error) {
+            
+        }
+
     }
 }

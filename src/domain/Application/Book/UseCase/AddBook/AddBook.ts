@@ -7,7 +7,6 @@ export class AddBook {
 
     async execute(request: IBook) {
         try {
-
             const response = new AddBookResponse()
             
             const book = new BookDTO(
@@ -22,31 +21,13 @@ export class AddBook {
                 request.categoryId
             )
 
-            // console.log('execute', request)
-
-            // await this.repository.addBook(book).then((err) => {
-            //     console.log("err ", err)
-            //     if (err.length > 0) {
-            //         return err
-            //     } else {
-            //         response.message = 'Le book a bien été ajouté'
-            //         return response
-            //     }
-            // })
-            
-            // console.log(book)
-
-            const res = await this.repository.addBook(book)
-            
-            // console.log(res)
+            await this.repository.addBook(book)
 
             response.message = 'Le book a bien été ajouté'
             return response
 
-            // console.log(result)
         } catch (error: any) {
-            // throw new Error(error)
-            console.log(error)
+            throw new Error(error)
         }
     }
 }

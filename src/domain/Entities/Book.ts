@@ -1,4 +1,5 @@
 export interface IBook {
+    id?: number
     name: string
     description: string
     author: string
@@ -11,6 +12,7 @@ export interface IBook {
 }
 
 export class BookDTO implements IBook {
+    id?: number
     constructor(
         readonly name: string,
         readonly description: string,

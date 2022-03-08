@@ -1,21 +1,14 @@
 import { Router } from "express";
-import { createBook } from "../controllers/BookController";
+import { createBook, getBook, getBooks } from "../controllers/BookController";
 
 
 const bookRouter = Router()
 
 bookRouter.post('/', createBook)
+bookRouter.get('/:id', getBook)
+bookRouter.get('/', getBooks)
 
 export default bookRouter
 
 
-
-// import { Router } from 'express'
-// import bookRouter from './Book.routes'
-
-// const router = Router()
-
-// router.use('/book', bookRouter)
-
-// export default router
 
