@@ -48,4 +48,16 @@ export class BookProvider implements IBookRepository {
         }
 
     }
+
+    async updateBook(id: number) {
+        try {
+
+            const book = await getRepository(Book).findOne(id)
+
+            return book
+            
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
 }

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { addBookAdapter, getBookAdapter, getBooksAdapter } from "../adapters/BookAdapter";
+import { addBookAdapter, getBookAdapter, getBooksAdapter, updateBookAdapter } from "../adapters/BookAdapter";
 import { BookProvider } from "../providers/BookProvider";
 
 // export class BookController {
@@ -38,6 +38,21 @@ import { BookProvider } from "../providers/BookProvider";
             const result = await getBooksAdapter.execute()
             return res.status(201).send(result)
 
+            
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    export const updateBook = async (req: Request, res: Response, next: NextFunction) => {
+
+        try {
+
+            const id = Number(req.params.id)
+            const result = await updateBookAdapter.execute(id)
+
+            console.log(result)
+            
             
         } catch (error) {
             next(error)
