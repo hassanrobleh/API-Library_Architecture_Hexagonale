@@ -24,7 +24,7 @@ export class BookProvider implements IBookRepository {
         try {
 
             const book = await getRepository(Book).findOne(id)
-            console.log(book)
+            // console.log(book)
             
             if (book) {
                 return book
@@ -49,12 +49,18 @@ export class BookProvider implements IBookRepository {
 
     }
 
-    async updateBook(id: number) {
+    async updateBook(id: number, book: any) {
         try {
 
-            const book = await getRepository(Book).findOne(id)
+            const bookId = await getRepository(Book).findOne(id)
+            // const book = await getRepository(Book).save(bookId)
 
-            return book
+            const bookUpdate = await getRepository(Book).merge(bookId, book)
+
+            
+            console.log('update provider', bookUpdate)
+
+            return bookUpdate
             
         } catch (error) {
             throw new Error(error)

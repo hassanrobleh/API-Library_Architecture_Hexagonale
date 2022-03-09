@@ -6,6 +6,6 @@ export interface IBookRepository {
     addBook(book: IBook): Promise<string | ValidationError[]>
     getBook(id: number): Promise<IBook>
     getBooks(): Promise<any>
-    updateBook(id: number): Promise<IBook>
+    updateBook(id: number, body: IBook): Promise<IBook>
     // deletebook()
 }   
