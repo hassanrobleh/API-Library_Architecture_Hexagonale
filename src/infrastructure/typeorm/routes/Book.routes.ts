@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { deleteBook } from '../controllers/BookController';
 import {
     createBook,
     getBook,
@@ -12,5 +13,6 @@ bookRouter.post('/', createBook)
 bookRouter.get('/:id', getBook)
 bookRouter.get('/', getBooks)
 bookRouter.put('/:id', updateBook)
+bookRouter.delete('/:id', deleteBook)
 
 export default bookRouter

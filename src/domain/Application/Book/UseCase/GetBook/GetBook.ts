@@ -11,7 +11,7 @@ export class GetBook {
 
             response.book = await this.repository.getBook(request)
 
-            console.log(response.book)
+            // console.log(response.book)
 
             return response.book
 

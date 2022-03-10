@@ -7,5 +7,5 @@ export interface IBookRepository {
     getBook(id: number): Promise<IBook>
     getBooks(): Promise<any>
     updateBook(id: number, body: IBook): Promise<IBook>
-    // deletebook()
+    deletebook(id: number)
 }   

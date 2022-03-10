@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import {
     addBookAdapter,
+    deleteBookAdapter,
     getBookAdapter,
     getBooksAdapter,
     updateBookAdapter,
@@ -49,6 +50,20 @@ export const updateBook = async ( req: Request, res: Response,next: NextFunction
         const body = req.body
         const result = await updateBookAdapter.execute(id, body)
         return res.status(201).send(result)
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+        const id = Number(req.params.id)
+        
+        const result = await deleteBookAdapter.execute(id)
+
+        return res.status(201).send(result)
+
     } catch (error) {
         next(error)
     }
