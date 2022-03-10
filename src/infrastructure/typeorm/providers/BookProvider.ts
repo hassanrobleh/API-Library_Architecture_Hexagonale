@@ -16,16 +16,13 @@ export class BookProvider implements IBookRepository {
                 return 'new book'
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         }
     }
 
     async getBook(id: number) {
         try {
-
-            const book = await getRepository(Book).findOne(id)
-            // console.log(book)
-            
+            const book = await getRepository(Book).findOne(id)            
             if (book) {
                 return book
             }
@@ -36,32 +33,21 @@ export class BookProvider implements IBookRepository {
     }
 
     async getBooks(name?: string | object) {
-
         try {
-
             const allBook = await getRepository(Book).find()
-
-            return allBook
-            
+            return allBook   
         } catch (error) {
-            
+            throw new Error(error)
         }
 
     }
 
     async updateBook(id: number, book: any) {
         try {
-
             const bookId = await getRepository(Book).findOne(id)
-            // const book = await getRepository(Book).save(bookId)
-
             const bookUpdate = await getRepository(Book).merge(bookId, book)
-
-            
-            console.log('update provider', bookUpdate)
-
-            return bookUpdate
-            
+            const result = await getRepository(Book).save(bookUpdate)
+            return result
         } catch (error) {
             throw new Error(error)
         }

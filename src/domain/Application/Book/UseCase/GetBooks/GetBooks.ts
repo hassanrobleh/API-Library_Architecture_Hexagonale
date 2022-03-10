@@ -7,12 +7,8 @@ export class GetBooks {
     constructor(private repository: IBookRepository) {}
 
     async execute(request?: IBook) {
-
         const response = new GetBooksResponse()
-
         response.books = await this.repository.getBooks()
-
         return response
-        
     }
 }

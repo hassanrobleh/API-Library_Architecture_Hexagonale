@@ -48,9 +48,6 @@ export const updateBook = async ( req: Request, res: Response,next: NextFunction
         const id = Number(req.params.id)
         const body = req.body
         const result = await updateBookAdapter.execute(id, body)
-        
-        // console.log(result)
-
         return res.status(201).send(result)
     } catch (error) {
         next(error)
