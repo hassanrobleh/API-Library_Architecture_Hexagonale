@@ -1,42 +1,23 @@
-import express from 'express'
-import cors from 'cors'
+import express from 'express';
 import 'reflect-metadata'
 import { createConnection } from 'typeorm'
-import routes from './routes'
 
-const app = express()
+
+import { expressApp } from './app'
+
 createConnection()
+    .then(async (conn) => {
+        await conn.runMigrations()
 
-// Middleware
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+        const app = express()
+        const PORT = 3000
 
-app.use(routes)
+        expressApp(app)
 
-// import { expressApp } from './app'
+        app.listen(PORT, () => {
+            console.log(`Server: Server is running at http://localhost:${PORT}`)
+        })
+    })
+    .catch((err) => console.log(err))
 
-// createConnection()
-//     .then(async (conn) => {
-//         await conn.runMigrations()
 
-//         const app = express()
-//         const PORT = 3000
-
-//         expressApp(app)
-
-//         app.listen(PORT, () => {
-//             console.log(`Server: Server is running at http://localhost:${PORT}`)
-//         })
-//     })
-//     .catch((err) => console.log(err))
-
-app.get('/', (req, res) => {
-    res.send("Hello from ts app")
-})
-
-const PORT = 3000
-
-app.listen(PORT, () => {
-    console.log(`Server: Server is running at http://localhost:${PORT}`)
-})

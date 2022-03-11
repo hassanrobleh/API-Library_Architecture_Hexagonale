@@ -26,7 +26,6 @@ export const createBook = async ( req: Request, res: Response, next: NextFunctio
 export const getBook = async ( req: Request, res: Response, next: NextFunction ) => {
     try {
         const id = Number(req.params.id)
-        // const result = await provider.addBook(body)
         const result = await getBookAdapter.execute(id)
         console.log(result)
         return res.status(201).send(result)
@@ -56,7 +55,6 @@ export const updateBook = async ( req: Request, res: Response,next: NextFunction
 }
 
 export const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
-
     try {
         const id = Number(req.params.id)
         

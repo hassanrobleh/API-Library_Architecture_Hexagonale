@@ -16,6 +16,8 @@ export class DeleteBook {
 
         response.message = "Le book a bien été supprimé "
 
+        return response
+
     } catch (error) {
         throw new Error(error)
     }

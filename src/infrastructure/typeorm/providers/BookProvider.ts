@@ -56,7 +56,6 @@ export class BookProvider implements IBookRepository {
    async deletebook(id: number) {
        
     try {
-
         const bookId = await getRepository(Book).findOne(id)
         if(bookId) {
             const bookDelete = await getRepository(Book).delete(bookId)
