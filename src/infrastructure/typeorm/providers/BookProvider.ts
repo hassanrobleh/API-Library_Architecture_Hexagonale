@@ -34,8 +34,10 @@ export class BookProvider implements IBookRepository {
 
     async getBooks(name?: string | object) {
         try {
+            
             const allBook = await getRepository(Book).find()
             return allBook   
+            
         } catch (error) {
             throw new Error(error)
         }
