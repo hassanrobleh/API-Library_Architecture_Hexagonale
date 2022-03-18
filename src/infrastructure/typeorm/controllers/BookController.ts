@@ -36,6 +36,7 @@ export const getBook = async ( req: Request, res: Response, next: NextFunction )
 
 export const getBooks = async ( req: Request, res: Response, next: NextFunction ) => {
     try {
+        const name = req.params.name
         const result = await getBooksAdapter.execute()
         return res.status(201).send(result)
     } catch (error) {
