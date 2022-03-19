@@ -27,7 +27,6 @@ export const getBook = async ( req: Request, res: Response, next: NextFunction )
     try {
         const id = Number(req.params.id)
         const result = await getBookAdapter.execute(id)
-        console.log(result)
         return res.status(201).send(result)
     } catch (error) {
         next(error)
@@ -36,7 +35,6 @@ export const getBook = async ( req: Request, res: Response, next: NextFunction )
 
 export const getBooks = async ( req: Request, res: Response, next: NextFunction ) => {
     try {
-        const name = req.params.name
         const result = await getBooksAdapter.execute()
         return res.status(201).send(result)
     } catch (error) {
@@ -58,11 +56,8 @@ export const updateBook = async ( req: Request, res: Response,next: NextFunction
 export const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = Number(req.params.id)
-        
         const result = await deleteBookAdapter.execute(id)
-
         return res.status(201).send(result)
-
     } catch (error) {
         next(error)
     }

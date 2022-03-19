@@ -8,11 +8,7 @@ export class GetBook {
     async execute(request: number) {
         try {
             const response = new GetBookResponse()
-
             response.book = await this.repository.getBook(request)
-
-            // console.log(response.book)
-
             return response.book
 
         } catch (error: any) {

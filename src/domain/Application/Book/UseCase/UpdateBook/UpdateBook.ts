@@ -20,7 +20,7 @@ export class UpdateBook {
                 request.categoryId
             )
             await this.repository.updateBook(id, book)
-            response.message = 'Le book a bien été ajouté'
+            response.message = 'Le book a bien été modifié'
             return response
         } catch (error) {
             throw new Error(error)
