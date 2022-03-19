@@ -29,6 +29,8 @@
         "express": "^4.17.3",
         "mysql2": "^2.3.3",
         "reflect-metadata": "^0.1.13",
+        "swagger-jsdoc": "^6.1.0",
+        "swagger-ui-express": "^4.3.0",
         "typeorm": "^0.2.44"
     },
     "devDependencies": {
