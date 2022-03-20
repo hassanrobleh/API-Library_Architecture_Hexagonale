@@ -2,9 +2,19 @@ import { getRepository } from 'typeorm'
 import { IBookRepository } from '../../../domain/Repository/BookRepository'
 import { Book } from '../models/Book'
 import { validate } from 'class-validator'
-import { BookDTO } from '../../../domain/Entities/Book'
+import { BookDTO, IBook } from '../../../domain/Entities/Book';
 
 export class BookProvider implements IBookRepository {
+
+    async getBooks(): Promise<BookDTO[]> {
+        try {       
+            const allBook  = await getRepository(Book).find()
+            return allBook
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+    
     async addBook(book: BookDTO) {
         try {
             const newBook = getRepository(Book).create(book)
@@ -20,7 +30,7 @@ export class BookProvider implements IBookRepository {
         }
     }
 
-    async getBook(id: number) {
+    async getBook(id: number): Promise<BookDTO> {
         try {
             const book = await getRepository(Book).findOne(id)            
             if (book) {
@@ -32,22 +42,14 @@ export class BookProvider implements IBookRepository {
         }
     }
 
-    async getBooks(name?: string | object) {
-        try {       
-            const allBook = await getRepository(Book).find()
-            return allBook
-        } catch (error) {
-            throw new Error(error)
-        }
-
-    }
+    
 
     async updateBook(id: number, book: any) {
         try {
             const bookId = await getRepository(Book).findOne(id)
             const bookUpdate = await getRepository(Book).merge(bookId, book)
-            const result = await getRepository(Book).save(bookUpdate)
-            return result
+            await getRepository(Book).save(bookUpdate)
+            return 'update book'
         } catch (error) {
             throw new Error(error)
         }
@@ -58,8 +60,8 @@ export class BookProvider implements IBookRepository {
     try {
         const bookId = await getRepository(Book).findOne(id)
         if(bookId) {
-            const bookDelete = await getRepository(Book).delete(bookId)
-            return bookDelete
+            await getRepository(Book).delete(bookId)
+            return 'book deleted'
         }
         
     } catch (error) {

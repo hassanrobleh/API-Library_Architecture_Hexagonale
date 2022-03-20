@@ -14,7 +14,7 @@ export class DeleteBook {
 
         await this.repository.deletebook(request)
 
-        response.message = "Le book a bien été supprimé "
+        response.message = "Le book a bien été supprimé"
 
         return response
 

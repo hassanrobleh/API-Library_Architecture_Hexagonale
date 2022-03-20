@@ -5,7 +5,7 @@ import { AddBookResponse } from './AddBookResponse'
 export class AddBook {
     constructor(private repository: IBookRepository) {}
 
-    async execute(request: IBook) {
+    async execute(request: BookDTO) {
         try {
             const response = new AddBookResponse()
             

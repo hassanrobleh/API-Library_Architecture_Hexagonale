@@ -3,9 +3,9 @@ import { BookDTO, IBook } from '../Entities/Book';
 
 export interface IBookRepository {
 
-    addBook(book: IBook): Promise<string | ValidationError[]>
-    getBook(id: number): Promise<IBook>
-    getBooks(): Promise<any>
-    updateBook(id: number, body: IBook): Promise<IBook>
+    addBook(book: BookDTO): Promise<string | ValidationError[]>
+    getBook(id: number): Promise<BookDTO>
+    getBooks(): Promise<BookDTO[]>
+    updateBook(id: number, body: BookDTO): Promise<string>
     deletebook(id: number)
 }   

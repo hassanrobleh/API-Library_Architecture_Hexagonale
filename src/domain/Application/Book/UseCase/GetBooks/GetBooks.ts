@@ -6,7 +6,7 @@ export class GetBooks {
 
     constructor(private repository: IBookRepository) {}
 
-    async execute(request?: IBook) {
+    async execute() {
         const response = new GetBooksResponse()
         response.books = await this.repository.getBooks()
         return response

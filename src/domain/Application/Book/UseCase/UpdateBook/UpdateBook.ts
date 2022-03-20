@@ -5,7 +5,7 @@ import { UpdateBookResponse } from './UpdateBookResponse'
 export class UpdateBook {
     constructor(private repository: IBookRepository) {}
 
-    async execute(id: number, request) {
+    async execute(id: number, request: BookDTO) {
         try {
             const response = new UpdateBookResponse()
             const book = new BookDTO(
@@ -20,6 +20,7 @@ export class UpdateBook {
                 request.categoryId
             )
             await this.repository.updateBook(id, book)
+            
             response.message = 'Le book a bien été modifié'
             return response
         } catch (error) {
