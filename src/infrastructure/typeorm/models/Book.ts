@@ -1,4 +1,4 @@
-import { IsInt, IsString } from "class-validator";
+import { isDate, IsDate, IsInt, IsString } from "class-validator";
 import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import { Category } from "./Category";
 import { User } from "./User";
@@ -22,8 +22,8 @@ export class Book {
     author: string
 
     @Column()
-    @IsString()
-    releaseAt: string
+    @IsDate()
+    releaseAt: Date
 
     @Column()
     @IsString()
@@ -44,6 +44,14 @@ export class Book {
     @Column()
     @IsInt()
     categoryId: number
+
+    @Column()
+    @IsDate()
+    createdAt?: Date
+
+    @Column()
+    @IsDate()
+    updatedAt?: Date
 
     @ManyToOne(() => User, user => user.books)
     user: User;

@@ -3,12 +3,14 @@ export interface IBook {
     name: string
     description: string
     author: string
-    releaseAt: string
+    releaseAt: Date
     imageUrl: string
     fileUrl: string
     approved: number
     userId: number
     categoryId: number
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export class BookDTO implements IBook {
@@ -17,7 +19,7 @@ export class BookDTO implements IBook {
         readonly name: string,
         readonly description: string,
         readonly author: string,
-        readonly releaseAt: string,
+        readonly releaseAt: Date,
         readonly imageUrl: string,
         readonly fileUrl: string,
         readonly approved: number,

@@ -2,8 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "version": "1.0.0",
-        "title": "Ticket to ride",
-        "description": "Test technique KOALA",
+        "title": "Book to ride",
+        "description": "Library API",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
@@ -23,61 +23,25 @@
         }
     },
     "tags": [
-        { "name": "User", "description": "API for user" },
-        { "name": "Book", "description": "API for book" },
-        { "name": "Category", "description": "API for category" },
-        { "name": "Login", "description": "API for login" }
+        { "name": "Book", "description": "API for book" }
     ],
     "consumes": ["application/json"],
     "produces": ["application/json"],
+
     "paths": {
-        "/users": {
+        "/book": {
             "get": {
-                "tags": ["User"],
-                "summary": "Get all users",
+                "tags": ["Books"],
+                "summary": "Get all books",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/User"
+                            "$ref": "#/definitions/Books"
                         }
                     }
                 }
             },
-            "post": {
-                "tags": ["User"],
-                "summary": "Create a new user",
-                "requestBody": {
-                    "description": "Create user",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/definitions/User"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Failed. Bad post data."
-                    }
-                }
-            }
-        },
-        "/book": {
-            "parameters": [
-                {
-                    "name": "auth",
-                    "in": "header",
-                    "description": "an authorization header",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
             "post": {
                 "tags": ["Book"],
                 "summary": "Create a new book",
@@ -92,6 +56,7 @@
                         }
                     }
                 },
+                "produces": ["application/json"],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -108,12 +73,39 @@
                     "name": "id",
                     "in": "path",
                     "required": true,
-                    "description": "Id of the book that we want to match"
+                    "description": "ID of the cat that we want to match",
+                    "type": "string"
                 }
             ],
+            "get": {
+                "tags": ["Books"],
+                "summary": "Get book with given ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Book with id",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    },
+                    "404": {
+                        "description": "Failed. Cat not found."
+                    }
+                }
+            },
             "put": {
+                "summary": "Update book with given ID",
                 "tags": ["Book"],
-                "summary": "Update a book",
                 "requestBody": {
                     "description": "Update book",
                     "required": true,
@@ -125,58 +117,56 @@
                         }
                     }
                 },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Book with new values of properties",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Failed. Bad post data."
-                    }
-                }
-            },
-            "get": {
-                "tags": ["Book"],
-                "summary": "get details for one book",
-                "responses": {
-                    "200": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Failed. Bad post data."
-                    }
-                }
-            }
-        }
-    },
-    "/book/{id}/category": {
-        "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "description": "Id of the book that we want to match"
-            }
-        ],
-        "get": {
-            "tags": ["Category"],
-            "summary": "Get category for books",
-            "requestBody": {
-                "description": "Update book",
-                "required": true,
-                "content": {
-                    "application/json": {
+                        "description": "Updated",
                         "schema": {
                             "$ref": "#/definitions/Book"
                         }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    },
+                    "404": {
+                        "description": "Failed. Book not found."
                     }
                 }
             },
-            "responses": {
-                "200": {
-                    "description": "Created"
-                },
-                "400": {
-                    "description": "Failed. Bad post data."
+            "delete": {
+                "summary": "Delete book with given ID",
+                "tags": ["Books"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Delete Book with id",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "404": {
+                        "description": "Failed. Book not found."
+                    }
                 }
             }
         }
@@ -218,47 +208,20 @@
                     "type": "number"
                 },
                 "categoryId": {
-                    "type": "string"
+                    "type": "number"
                 }
             }
         },
-        "Category": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string"
-                }
-            }
-        },
-        "User": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "type": "string"
-                }
-            }
-        }
-    },
-    "User": {
-        "type": "object",
-        "properties": {
-            "user": {
-                "type": "object",
-                "additionnalProperties": {
-                    "$ref": "#/definitions/User"
-                }
-            }
-        }
-    },
-    "Book": {
-        "type": "object",
-        "properties": {
-            "book": {
-                "type": "object",
-                "additionnalProperties": {
-                    "$ref": "#/definitions/Book"
-                }
-            }
-        }
+        "Books": {
+          "type": "object",
+          "properties": {
+              "ticket": {
+                  "type": "object",
+                  "additionnalProperties": {
+                      "$ref": "#/definitions/Book"
+                  }
+              }
+          }
+      }
     }
 }
