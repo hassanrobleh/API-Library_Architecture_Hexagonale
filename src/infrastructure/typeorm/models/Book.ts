@@ -1,11 +1,20 @@
-import { isDate, IsDate, IsInt, IsString } from "class-validator";
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import { Category } from "./Category";
-import { User } from "./User";
+import { IsInt, IsString } from 'class-validator'
+
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm'
+// import { isDate } from 'util/types'
+import { IsDateFormat } from '../utils/IsDate'
+import { Category } from './Category'
+import { User } from './User'
 
 @Entity()
 export class Book {
-
     @PrimaryGeneratedColumn()
     id: number
 
@@ -22,7 +31,7 @@ export class Book {
     author: string
 
     @Column()
-    @IsDate()
+    @IsDateFormat()
     releaseAt: Date
 
     @Column()
@@ -45,17 +54,15 @@ export class Book {
     @IsInt()
     categoryId: number
 
-    @Column()
-    @IsDate()
-    createdAt?: Date
+    @ManyToOne(() => User, (user) => user.books)
+    user: User
 
-    @Column()
-    @IsDate()
-    updatedAt?: Date
+    @ManyToOne(() => Category, (category) => category.books)
+    category: Category
 
-    @ManyToOne(() => User, user => user.books)
-    user: User;
+    @CreateDateColumn()
+    created_at: Date
 
-    @ManyToOne(() => Category, category => category.books)
-    category: Category;
+    @UpdateDateColumn()
+    updated_at: Date
 }

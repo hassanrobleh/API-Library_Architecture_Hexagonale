@@ -9,8 +9,8 @@ export interface IBook {
     approved: number
     userId: number
     categoryId: number
-    createdAt?: Date;
-    updatedAt?: Date;
+    created_at?: Date
+    update_at?: Date
 }
 
 export class BookDTO implements IBook {
@@ -24,6 +24,7 @@ export class BookDTO implements IBook {
         readonly fileUrl: string,
         readonly approved: number,
         readonly userId: number,
-        readonly categoryId: number
+        readonly categoryId: number,
+    
     ) {}
 }
