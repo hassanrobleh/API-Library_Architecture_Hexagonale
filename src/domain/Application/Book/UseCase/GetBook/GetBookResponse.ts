@@ -1,4 +1,4 @@
-import { BookDTO, IBook } from '../../../../Entities/Book';
+import { IBook } from '../../../../Entities/Book';
 
 export class GetBookResponse {
     book?: IBook
