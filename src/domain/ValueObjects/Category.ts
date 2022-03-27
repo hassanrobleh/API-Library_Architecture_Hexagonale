@@ -4,7 +4,7 @@ export interface ICategory {
     description: string
 }
 
-export class Category implements ICategory {
+export class CategoryDTO implements ICategory {
     id?: number
     constructor(
         readonly name: string,
