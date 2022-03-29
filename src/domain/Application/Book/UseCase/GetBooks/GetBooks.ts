@@ -1,6 +1,5 @@
 import { IBookRepository } from '../../../../Repository/BookRepository';
 import { GetBooksResponse } from './GetBooksResponse';
-import { IBook } from '../../../../Entities/Book';
 
 export class GetBooks {
 
