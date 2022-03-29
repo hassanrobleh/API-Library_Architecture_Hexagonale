@@ -1,26 +1,23 @@
 import { UserDTO } from '../../../../Entities/User'
 import { IUserRepository } from '../../../../Repository/UserRepository'
-import { AddUserResponse } from './AddUserResponse'
+import { UpdateUserResponse } from './UpdateUserResponse'
 
-export class AddUser {
+export class UpdateUser {
     constructor(private repository: IUserRepository) {}
 
-    async execute(request: UserDTO) {
+    async execute(id: number, request: UserDTO) {
         try {
-            const response = new AddUserResponse()
-
+            const response = new UpdateUserResponse()
             const user = new UserDTO(
                 request.email,
                 request.password,
                 request.firstName,
                 request.lastName
             )
-
-            await this.repository.addUser(user)
-
-            response.message = 'Le user a bien été ajouté'
-            return response
-        } catch (error: any) {
+            await this.repository.updateUser(id, user)
+            response.message = `Le user ${id} a bien été modifié`
+            return response.message
+        } catch (error) {
             throw new Error(error)
         }
     }

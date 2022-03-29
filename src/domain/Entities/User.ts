@@ -1,4 +1,3 @@
-
 export interface IUser {
     id?: number
     email: string,
@@ -7,7 +6,7 @@ export interface IUser {
     lastName: string,
 }
 
-export class User implements IUser {
+export class UserDTO implements IUser {
     id?: number
     constructor(
         readonly email: string,

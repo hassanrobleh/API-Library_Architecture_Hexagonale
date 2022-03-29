@@ -19,6 +19,10 @@ export class User {
     @IsString()
     firstName: string
 
+    @Column()
+    @IsString()
+    lastName: string
+
     @OneToMany(() => Book, book => book.user,  {nullable: false})
     books: Book[];
 }
