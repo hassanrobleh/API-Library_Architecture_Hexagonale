@@ -1,7 +1,7 @@
 
-import { GetBook } from '../../../src/domain/Application/Book/UseCase/GetBook/GetBook';
-import { MockBookProvider } from '../data/mock/mockBookProvider';
-import { book, books } from '../data/bookData';
+import { GetBook } from '../../../../src/domain/Application/Book/UseCase/GetBook/GetBook';
+import { MockBookProvider } from '../../data/mock/mockBookProvider';
+import { book } from '../../data/bookData';
 
 
 describe('get book', () => {

@@ -1,4 +1,3 @@
-import { BookDTO } from '../../../../src/domain/Entities/Book';
 import { IBookRepository } from '../../../../src/domain/Repository/BookRepository';
 import { books, book } from '../bookData';
 

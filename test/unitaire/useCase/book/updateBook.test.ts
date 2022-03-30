@@ -1,7 +1,7 @@
 
-import { MockBookProvider } from '../data/mock/mockBookProvider';
-import { book } from '../data/bookData';
-import { UpdateBook } from '../../../src/domain/Application/Book/UseCase/UpdateBook/UpdateBook';
+import { UpdateBook } from '../../../../src/domain/Application/Book/UseCase/UpdateBook/UpdateBook';
+import { MockBookProvider } from '../../data/mock/mockBookProvider';
+import { book } from '../../data/bookData';
 
 
 describe('add book', () => {

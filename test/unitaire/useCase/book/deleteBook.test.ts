@@ -1,7 +1,5 @@
-
-import { MockBookProvider } from '../data/mock/mockBookProvider';
-import { book, books } from '../data/bookData';
-import { DeleteBook } from '../../../src/domain/Application/Book/UseCase/DeleteBook/DeleteBook';
+import { DeleteBook } from '../../../../src/domain/Application/Book/UseCase/DeleteBook/DeleteBook';
+import { MockBookProvider } from "../../data/mock/mockBookProvider"
 
 
 describe('get book', () => {
