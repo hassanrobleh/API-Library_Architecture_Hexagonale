@@ -1,9 +1,7 @@
 import { IBookRepository } from '../../../../src/domain/Repository/BookRepository';
 import { books, book } from '../bookData';
 
-
 export class MockBookProvider implements IBookRepository {
-
 
     async addBook() {
        return Promise.resolve('new Book')

@@ -1,7 +1,3 @@
-
-
-describe('Add category', () => { 
-    it('add category', () => {
-        
-    })
- })
+describe('Add category', () => {
+    it('add category', () => {})
+})

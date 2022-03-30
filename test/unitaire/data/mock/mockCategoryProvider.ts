@@ -1,9 +1,7 @@
 import { ICategoryRepository } from '../../../../src/domain/Repository/CategoryRepository';
 import { categories, category } from '../categoryData';
 
-
 export class MockCategoryProvider implements ICategoryRepository {
-
 
     async addCategory() {
        return Promise.resolve('new category')
