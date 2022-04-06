@@ -2,12 +2,20 @@ import { ICategoryRepository } from '../../../domain/Repository/CategoryReposito
 import { CategoryDTO } from '../../../domain/ValueObjects/Category'
 import { getRepository } from 'typeorm'
 import { Category } from '../models/Category'
+import { validate } from 'class-validator'
 
 export class CategoryProvider implements ICategoryRepository {
 
     async addCategory(category: CategoryDTO) {
         try {
-            return 'new category'
+            const newCat = getRepository(Category).create(category)
+            const err = await validate(newCat)
+            if (err.length > 0) {
+                return err
+            } else {
+                await getRepository(Category).save(newCat)
+                return 'new Category'
+            }
         } catch (error) {}
     }
 

@@ -7,18 +7,15 @@ import {
     updateCategoryAdapter,
 } from '../adapters/CategoryAdapter'
 
-export const createCategory = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) => {
-    const body = req.body
+export const createCategory = async (req: Request,res: Response,next: NextFunction) => {
     try {
-        // const result = await provider.addBook(body)
+        const body = req.body
+        console.log(body)
         const result = await addCategoryAdapter.execute(body)
         return res.status(201).send(result)
-    } catch (error) {
-        console.log(error)
+    } catch (e) {
+        // console.log(error)
+        next(e)
     }
 }
 
