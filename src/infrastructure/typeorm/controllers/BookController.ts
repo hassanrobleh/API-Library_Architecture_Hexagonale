@@ -19,7 +19,7 @@ export const createBook = async ( req: Request, res: Response, next: NextFunctio
         const result = await addBookAdapter.execute(body)
         return res.status(201).send(result)
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 }
 
