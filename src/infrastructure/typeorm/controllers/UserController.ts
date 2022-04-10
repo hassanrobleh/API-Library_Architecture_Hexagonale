@@ -24,7 +24,7 @@ export const getUser = async (
     }
 }
 
-export const getCategories = async (
+export const getUsers = async (
     _: Request,
     res: Response,
     next: NextFunction
@@ -36,7 +36,7 @@ export const getCategories = async (
     }
 }
 
-export const updateCategory = async (
+export const updateUser = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -50,7 +50,7 @@ export const updateCategory = async (
     }
 }
 
-export const deleteCategory = async (
+export const deleteUser = async (
     req: Request,
     res: Response,
     next: NextFunction
