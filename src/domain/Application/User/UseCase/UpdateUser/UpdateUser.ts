@@ -15,8 +15,8 @@ export class UpdateUser {
                 request.lastName
             )
             await this.repository.updateUser(id, user)
-            response.message = `Le user ${id} a bien été modifié`
-            return response.message
+            response.message = `Le user a bien été modifié`
+            return response
         } catch (error) {
             throw new Error(error)
         }

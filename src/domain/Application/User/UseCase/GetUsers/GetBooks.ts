@@ -8,5 +8,6 @@ export class GetUsers {
     async execute() {
         const response = new GetUsersResponse()
         response.users = await this.repository.getUsers()
+        return response
     }
 }

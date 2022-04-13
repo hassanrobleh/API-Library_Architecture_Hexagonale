@@ -1,16 +1,16 @@
+import { MockUserProvider } from '../../data/mock/mockUserProvider';
+import { GetUser } from '../../../../src/domain/Application/User/UseCase/GetUser/GetUser';
+import { user } from '../../data/userData';
 
-import { GetBook } from '../../../../src/domain/Application/Book/UseCase/GetBook/GetBook';
-import { MockBookProvider } from '../../data/mock/mockBookProvider';
-import { book } from '../../data/bookData';
 
 
-describe('get book', () => {
+describe('get user', () => {
 
-    const mockbookProvider = new MockBookProvider()
-    const getBook = new GetBook(mockbookProvider)
-    it('getbook', async () => {
-        const result = await getBook.execute(1)
+    const mockUserProvider = new MockUserProvider()
+    const getUser = new GetUser(mockUserProvider)
+    it('getUser', async () => {
+        const result = await getUser.execute(1)
         
-        expect(result).toEqual(book)
+        expect(result).toEqual(user)
     })
 })
