@@ -19,7 +19,7 @@ export class MockBookProvider implements IBookRepository {
        return Promise.resolve('update book')
     }
 
-    async deletebook() {
+    async deleteBook() {
         return Promise.resolve('book deleted')
     }
 }

@@ -4,6 +4,8 @@ export interface IUser {
     password: string
     firstName: string,
     lastName: string,
+    created_at?: Date
+    update_at?: Date
 }
 
 export class UserDTO implements IUser {

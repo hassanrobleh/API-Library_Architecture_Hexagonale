@@ -7,7 +7,7 @@ export class DeleteBook {
     async execute(request: number) {
         try {
             const response = new DeleteBookResponse()
-            await this.repository.deletebook(request)
+            await this.repository.deleteBook(request)
             response.message = 'Le book a bien été supprimé'
             return response
         } catch (error) {

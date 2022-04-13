@@ -39,10 +39,10 @@ describe('book', () => {
     })
 
     it('deleted book', async () => {
-        bookProvider.deletebook = jest.fn(() => {
+        bookProvider.deleteBook = jest.fn(() => {
             return Promise.resolve('book deleted')
         })
-        const result = await bookProvider.deletebook(1)
+        const result = await bookProvider.deleteBook(1)
         expect(result).toBe('book deleted')       
     })
 })

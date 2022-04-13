@@ -14,7 +14,7 @@ export class UserProvider implements IUserRepository {
                 return err
             } else {
                 await getRepository(User).save(newUser)
-                return 'new User'
+                return 'new user'
             }
         } catch (error) {}
     }

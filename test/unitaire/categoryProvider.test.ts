@@ -1,48 +1,47 @@
-import { BookProvider } from '../../src/infrastructure/typeorm/providers/BookProvider';
-import { book, books } from './data/bookData';
+import { CategoryProvider } from '../../src/infrastructure/typeorm/providers/CategoryProvider';
+import { categories, category } from './data/categoryData';
 
+describe('category', () => {
 
-describe('book', () => {
-
-    const bookProvider = new BookProvider()
+    const categoryProvider = new CategoryProvider()
     
-    it('add book', async () => {
-        bookProvider.addBook = jest.fn(() => {
-            return Promise.resolve('new book')
+    it('add category', async () => {
+        categoryProvider.addCategory = jest.fn(() => {
+            return Promise.resolve('new category')
         })
-        const result = await bookProvider.addBook(book)
-        expect(result).toBe('new book')
+        const result = await categoryProvider.addCategory(category)
+        expect(result).toBe('new category')
     })
 
-    it('get all book', async () => {
-        bookProvider.getBooks = jest.fn(() => {
-            return Promise.resolve(books)
+    it('get all category', async () => {
+        categoryProvider.getCategories = jest.fn(() => {
+            return Promise.resolve(categories)
         })
-        const result = await bookProvider.getBooks()
-        expect(result).toEqual(books)       
+        const result = await categoryProvider.getCategories()
+        expect(result).toEqual(categories)       
     })
 
-    it('get book id', async () => {
-        bookProvider.getBook = jest.fn(() => {
-            return Promise.resolve(book)
+    it('get category id', async () => {
+        categoryProvider.getCategory = jest.fn(() => {
+            return Promise.resolve(category)
         })
-        const result = await bookProvider.getBook(1)
-        expect(result).toEqual(book)       
+        const result = await categoryProvider.getCategory(1)
+        expect(result).toEqual(category)       
     })
 
-    it('update book', async () => {
-        bookProvider.updateBook = jest.fn(() => {
-            return Promise.resolve('book updated')
+    it('update category', async () => {
+        categoryProvider.updateCategory = jest.fn(() => {
+            return Promise.resolve('category updated')
         })
-        const result = await bookProvider.updateBook(1, book)
-        expect(result).toBe('book updated')       
+        const result = await categoryProvider.updateCategory(1, category)
+        expect(result).toBe('category updated')       
     })
 
-    it('deleted book', async () => {
-        bookProvider.deletebook = jest.fn(() => {
-            return Promise.resolve('book deleted')
+    it('deleted category', async () => {
+        categoryProvider.deleteCategory = jest.fn(() => {
+            return Promise.resolve('category deleted')
         })
-        const result = await bookProvider.deletebook(1)
-        expect(result).toBe('book deleted')       
+        const result = await categoryProvider.deleteCategory(1)
+        expect(result).toBe('category deleted')       
     })
 })

@@ -1,48 +1,48 @@
-import { BookProvider } from '../../src/infrastructure/typeorm/providers/BookProvider';
-import { book, books } from './data/bookData';
+import { UserProvider } from '../../src/infrastructure/typeorm/providers/UserProvider';
+import { user, users } from './data/userData';
 
 
-describe('book', () => {
+describe('user', () => {
 
-    const bookProvider = new BookProvider()
+    const userProvider = new UserProvider()
     
-    it('add book', async () => {
-        bookProvider.addBook = jest.fn(() => {
-            return Promise.resolve('new book')
+    it('add user', async () => {
+        userProvider.addUser = jest.fn(() => {
+            return Promise.resolve('new user')
         })
-        const result = await bookProvider.addBook(book)
-        expect(result).toBe('new book')
+        const result = await userProvider.addUser(user)
+        expect(result).toBe('new user')
     })
 
-    it('get all book', async () => {
-        bookProvider.getBooks = jest.fn(() => {
-            return Promise.resolve(books)
+    it('get all user', async () => {
+        userProvider.getUsers = jest.fn(() => {
+            return Promise.resolve(users)
         })
-        const result = await bookProvider.getBooks()
-        expect(result).toEqual(books)       
+        const result = await userProvider.getUsers()
+        expect(result).toEqual(users)       
     })
 
-    it('get book id', async () => {
-        bookProvider.getBook = jest.fn(() => {
-            return Promise.resolve(book)
+    it('get user id', async () => {
+        userProvider.getUser = jest.fn(() => {
+            return Promise.resolve(user)
         })
-        const result = await bookProvider.getBook(1)
-        expect(result).toEqual(book)       
+        const result = await userProvider.getUser(1)
+        expect(result).toEqual(user)       
     })
 
-    it('update book', async () => {
-        bookProvider.updateBook = jest.fn(() => {
-            return Promise.resolve('book updated')
+    it('update user', async () => {
+        userProvider.updateUser = jest.fn(() => {
+            return Promise.resolve('user updated')
         })
-        const result = await bookProvider.updateBook(1, book)
-        expect(result).toBe('book updated')       
+        const result = await userProvider.updateUser(1, user)
+        expect(result).toBe('user updated')       
     })
 
-    it('deleted book', async () => {
-        bookProvider.deletebook = jest.fn(() => {
-            return Promise.resolve('book deleted')
+    it('deleted user', async () => {
+        userProvider.deleteUser = jest.fn(() => {
+            return Promise.resolve('user deleted')
         })
-        const result = await bookProvider.deletebook(1)
-        expect(result).toBe('book deleted')       
+        const result = await userProvider.deleteUser(1)
+        expect(result).toBe('user deleted')       
     })
 })

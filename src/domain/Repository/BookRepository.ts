@@ -1,5 +1,5 @@
 import { ValidationError } from 'class-validator';
-import { BookDTO, IBook } from '../Entities/Book';
+import { BookDTO } from '../Entities/Book';
 
 export interface IBookRepository {
 
@@ -7,5 +7,5 @@ export interface IBookRepository {
     getBook(id: number): Promise<BookDTO>
     getBooks(): Promise<BookDTO[]>
     updateBook(id: number, body: BookDTO): Promise<string>
-    deletebook(id: number)
+    deleteBook(id: number)
 }   

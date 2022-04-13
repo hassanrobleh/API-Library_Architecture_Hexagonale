@@ -8,7 +8,7 @@ export class DeleteUser {
         try {
             const response = new DeleteUserResponse()
             await this.repository.deleteUser(request)
-            response.message = `Le user ${request} a bien été supprimé`
+            response.message = `Le user a bien été supprimé`
             return response
         } catch (error) {
             throw new Error(error)
