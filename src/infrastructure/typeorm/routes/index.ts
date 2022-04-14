@@ -7,7 +7,7 @@ const router = Router()
 
 router.use('/book', bookRouter)
 router.use('/category', categoryRouter)
-router.use('.user', userRouter)
+router.use('/user', userRouter)
 
 export default router
 

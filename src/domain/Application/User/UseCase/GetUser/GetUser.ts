@@ -4,7 +4,7 @@ import { GetUserResponse } from './GetUserResponse'
 export class GetUser {
     constructor(private repository: IUserRepository) {}
 
-    async execute(request: number) {
+    async execute(request: string) {
         try {
             const response = new GetUserResponse()
             response.user = await this.repository.getUser(request)

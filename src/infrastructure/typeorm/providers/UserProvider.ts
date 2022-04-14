@@ -19,16 +19,15 @@ export class UserProvider implements IUserRepository {
         } catch (error) {}
     }
 
-    async getUser(id: number): Promise<UserDTO> {
+    async getUser(email: string): Promise<UserDTO> {
         try {
-            const user = await getRepository(User).findOne(id)
+            const user = await getRepository(User).findOne(email)
             if (user) {
                 return user
             }
             return user
         } catch (error) {
-            throw new Error(error);
-            
+            throw new Error(error)
         }
     }
 
@@ -37,7 +36,7 @@ export class UserProvider implements IUserRepository {
             const users = await getRepository(User).find()
             return users
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error)
         }
     }
 
@@ -63,5 +62,4 @@ export class UserProvider implements IUserRepository {
             throw new Error(error)
         }
     }
-    
 }

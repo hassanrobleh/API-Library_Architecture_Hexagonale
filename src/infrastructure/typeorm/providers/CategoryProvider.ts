@@ -5,16 +5,6 @@ import { Category } from '../models/Category'
 import { validate } from 'class-validator'
 
 export class CategoryProvider implements ICategoryRepository {
-
-    async getCategories(): Promise<CategoryDTO[]> {
-        try {
-            const categories = await getRepository(Category).find()
-            return categories
-        } catch (error) {
-            throw new Error(error)
-        }
-    }
-
     async addCategory(category: CategoryDTO) {
         try {
             const newCat = getRepository(Category).create(category)
@@ -26,7 +16,7 @@ export class CategoryProvider implements ICategoryRepository {
                 return 'new category'
             }
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error)
         }
     }
 
@@ -42,10 +32,22 @@ export class CategoryProvider implements ICategoryRepository {
         }
     }
 
+    async getCategories(): Promise<CategoryDTO[]> {
+        try {
+            const categories = await getRepository(Category).find()
+            return categories
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
     async updateCategory(id: number, category: any) {
         try {
             const categoryId = await getRepository(Category).findOne(id)
-            const categoryUpdate = await getRepository(Category).merge(categoryId, category)
+            const categoryUpdate = await getRepository(Category).merge(
+                categoryId,
+                category
+            )
             await getRepository(Category).save(categoryUpdate)
             return 'update category'
         } catch (error) {
@@ -64,6 +66,4 @@ export class CategoryProvider implements ICategoryRepository {
             throw new Error(error)
         }
     }
-
-
 }

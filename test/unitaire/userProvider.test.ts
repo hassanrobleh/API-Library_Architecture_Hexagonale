@@ -22,11 +22,11 @@ describe('user', () => {
         expect(result).toEqual(users)       
     })
 
-    it('get user id', async () => {
+    it('getByEmail', async () => {
         userProvider.getUser = jest.fn(() => {
             return Promise.resolve(user)
         })
-        const result = await userProvider.getUser(1)
+        const result = await userProvider.getUser('test@test.fr')
         expect(result).toEqual(user)       
     })
 

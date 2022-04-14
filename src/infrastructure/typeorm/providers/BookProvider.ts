@@ -5,15 +5,6 @@ import { validate } from 'class-validator'
 import { BookDTO, IBook } from '../../../domain/Entities/Book'
 
 export class BookProvider implements IBookRepository {
-    async getBooks(): Promise<BookDTO[]> {
-        try {
-            const allBook = await getRepository(Book).find()
-            return allBook
-        } catch (error) {
-            throw new Error(error)
-        }
-    }
-
     async addBook(book: BookDTO) {
         try {
             const newBook = getRepository(Book).create(book)
@@ -36,6 +27,15 @@ export class BookProvider implements IBookRepository {
                 return book
             }
             return book
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
+    async getBooks(): Promise<BookDTO[]> {
+        try {
+            const allBook = await getRepository(Book).find()
+            return allBook
         } catch (error) {
             throw new Error(error)
         }
