@@ -8,6 +8,8 @@ export const user: UserDTO = {
     
 }
 
+export const user1:string = `${user.email}, ${user.firstName}, ${user.lastName}`
+
 export const users: UserDTO[] = [
     {
         email: 'test@test.fr',

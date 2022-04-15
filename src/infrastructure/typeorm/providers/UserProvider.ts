@@ -24,7 +24,7 @@ export class UserProvider implements IUserRepository {
         try {
             const user = await getRepository(User).findOne(email)
             if (user) {
-                return user
+                user
             }
             return user
         } catch (error) {

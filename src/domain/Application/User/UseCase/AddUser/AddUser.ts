@@ -20,8 +20,8 @@ export class AddUser {
 
             response.message = 'Le user a bien été ajouté'
             return response
-        } catch (error: any) {
-            throw new Error(error)
+        } catch (e: any) {
+            throw new Error(e)
         }
     }
 }
