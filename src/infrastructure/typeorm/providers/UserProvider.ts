@@ -6,6 +6,7 @@ import { UserDTO } from '../../../domain/Entities/User'
 
 export class UserProvider implements IUserRepository {
     async addUser(user: UserDTO) {
+        
         try {
             const newUser = getRepository(User).create(user)
             const err = await validate(newUser)
