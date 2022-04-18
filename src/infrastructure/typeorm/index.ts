@@ -1,8 +1,6 @@
-import express from 'express';
+import express from 'express'
 import 'reflect-metadata'
 import { createConnection } from 'typeorm'
-
-
 import { expressApp } from './app'
 
 createConnection()
@@ -19,5 +17,3 @@ createConnection()
         })
     })
     .catch((err) => console.log(err))
-
-

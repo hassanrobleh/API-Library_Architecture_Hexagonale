@@ -3,6 +3,9 @@ import cors from 'cors'
 import swaggerDocument from '../../../swagger.json'
 import * as swaggerUi from 'swagger-ui-express'; 
 import routes from './routes'
+import dotenv from "dotenv";
+
+dotenv.config()
 
 export const expressApp = async (app) => {
     // expressOasGenerator.init(app, {})

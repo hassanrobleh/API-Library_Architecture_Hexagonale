@@ -45,6 +45,15 @@ export class User {
     @UpdateDateColumn()
     updated_at: Date
 
+    // auth(password: string) {
+    //     return bcrypt.compareSync(password, this.password)
+    // }
+
+    // @BeforeInsert()
+    // encryptPassword() {
+    //     this.password = bcrypt.hashSync(this.password, 10)
+    // }
+
     @BeforeInsert()
     async setPassword(password: string) {
         const salt = await bcrypt.genSalt()

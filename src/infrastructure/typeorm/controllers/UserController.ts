@@ -5,6 +5,7 @@ import { addUserAdapter, deleteUserAdapter, getUserAdapter, getUsersAdapter, upd
 export const createUser = async (req: Request,res: Response,next: NextFunction) => {
     try {
         const body = req.body
+        //console.log(body)
         const result = await addUserAdapter.execute(body)
         return res.status(201).send(result)
     } catch (e) {

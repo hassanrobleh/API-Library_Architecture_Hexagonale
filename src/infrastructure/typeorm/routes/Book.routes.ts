@@ -6,10 +6,11 @@ import {
     getBooks,
     updateBook,
 } from '../controllers/BookController'
+import { auth } from '../middleware/auth'
 
 const bookRouter = Router()
 
-bookRouter.get('/', getBooks)
+bookRouter.get('/', auth, getBooks)
 
 bookRouter.get('/:id', getBook)
 
