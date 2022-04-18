@@ -3,13 +3,12 @@ import { getRepository } from 'typeorm'
 import { User } from '../models/User'
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { loginAdapter } from '../adapters/UserAdapter';
 
 export const login = async ( req: Request, res: Response, next: NextFunction ) => {
     try {
         const {email, password} = req.body
-        // const result = await getUserAdapter.execute(email)
-
-        const user = await getRepository(User).findOne(email)
+        const user = await loginAdapter.execute(email)
         if (!user) {
             const message = `L'utilisateur demandé n'existe pas.`
             return res.status(404).json({ message })

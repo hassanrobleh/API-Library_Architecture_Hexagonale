@@ -6,7 +6,6 @@ import { UserDTO } from '../../../domain/Entities/User'
 
 export class UserProvider implements IUserRepository {
     async addUser(user: UserDTO) {
-        
         try {
             const newUser = getRepository(User).create(user)
             const err = await validate(newUser)
@@ -17,14 +16,16 @@ export class UserProvider implements IUserRepository {
                 await getRepository(User).save(newUser)
                 return 'new user'
             }
-        } catch (error) {}
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
     async getUser(email: string): Promise<UserDTO> {
         try {
             const user = await getRepository(User).findOne(email)
             if (user) {
-                user
+                return user
             }
             return user
         } catch (error) {
@@ -36,6 +37,18 @@ export class UserProvider implements IUserRepository {
         try {
             const users = await getRepository(User).find()
             return users
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
+    async login(email: string): Promise<UserDTO> {
+        try {
+            const user = await getRepository(User).findOne(email)
+            if (user) {
+                return user
+            }
+            return user
         } catch (error) {
             throw new Error(error)
         }
