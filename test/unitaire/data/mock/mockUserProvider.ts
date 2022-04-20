@@ -16,6 +16,10 @@ export class MockUserProvider implements IUserRepository {
        return Promise.resolve(user)
     }
 
+    async login() {
+        return Promise.resolve(user)
+    }
+
     async updateUser() {
        return Promise.resolve('update user')
     }

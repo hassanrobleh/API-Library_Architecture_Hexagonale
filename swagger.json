@@ -23,25 +23,64 @@
         }
     },
     "tags": [
-        { "name": "Book", "description": "API for book" }
+        { "name": "User", "description": "API for user" },
+        { "name": "Book", "description": "API for book" },
+        { "name": "Category", "description": "API for category" },
+        { "name": "Login", "description": "API for login" }
     ],
     "consumes": ["application/json"],
     "produces": ["application/json"],
 
     "paths": {
-        "/book": {
+        "/users": {
             "get": {
-                "tags": ["Books"],
-                "summary": "Get all books",
+                "tags": ["User"],
+                "summary": "Get all users",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/Books"
+                            "$ref": "#/definitions/User"
                         }
                     }
                 }
             },
+            "post": {
+                "tags": ["User"],
+                "summary": "Create a new user",
+                "requestBody": {
+                    "description": "Create user",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+
+        "/book": {
+            "parameters": [
+                {
+                    "name": "auth",
+                    "in": "header",
+                    "description": "an authorization header",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+
             "post": {
                 "tags": ["Book"],
                 "summary": "Create a new book",
@@ -73,7 +112,7 @@
                     "name": "id",
                     "in": "path",
                     "required": true,
-                    "description": "ID of the cat that we want to match",
+                    "description": "ID of the book that we want to match",
                     "type": "string"
                 }
             ],
@@ -117,17 +156,6 @@
                         }
                     }
                 },
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "description": "Book with new values of properties",
-                        "schema": {
-                            "$ref": "#/definitions/id"
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Updated",
@@ -166,6 +194,56 @@
                     },
                     "404": {
                         "description": "Failed. Book not found."
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["Login"],
+                "summary": "Login",
+                "requestBody": {
+                    "description": "Login",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token"
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/category": {
+            "post": {
+                "tags": ["Category"],
+                "summary": "Create a new category for book",
+                "requestBody": {
+                    "description": "Create category for book",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Category"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
                     }
                 }
             }
@@ -212,16 +290,54 @@
                 }
             }
         },
-        "Books": {
-          "type": "object",
-          "properties": {
-              "ticket": {
-                  "type": "object",
-                  "additionnalProperties": {
-                      "$ref": "#/definitions/Book"
-                  }
-              }
-          }
-      }
+
+        "Category": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "User": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "Books": {
+        "type": "object",
+        "properties": {
+            "ticket": {
+                "type": "object",
+                "additionnalProperties": {
+                    "$ref": "#/definitions/Book"
+                }
+            }
+        }
+    },
+    "User": {
+        "type": "object",
+        "properties": {
+            "user": {
+                "type": "object",
+                "additionnalProperties": {
+                    "$ref": "#/definitions/User"
+                }
+            }
+        }
     }
 }
