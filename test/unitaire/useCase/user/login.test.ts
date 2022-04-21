@@ -6,7 +6,7 @@ describe('Login', () => {
     const mockUserProvider = new MockUserProvider()
     const login = new Login(mockUserProvider)
     it('signin', async () => {
-        const result = await login.execute('test@test.fr')
+        const result = await login.execute('test@gmail.com')
         expect(result).toEqual(user)
     })
 })
