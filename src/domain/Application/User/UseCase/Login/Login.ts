@@ -7,7 +7,7 @@ export class Login {
     async execute(request: string) {
         try {
             const response = new LoginResponse()
-            response.user = await this.repository.getUser(request)
+            response.user = await this.repository.login(request)
             return response.user
         } catch (error: any) {
             throw new Error(error)
