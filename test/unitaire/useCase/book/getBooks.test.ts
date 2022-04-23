@@ -9,7 +9,6 @@ describe('get all books', () => {
     const getBooks = new GetBooks(mockbookProvider)
     it('getbooks', async () => {
         const result = await getBooks.execute()
-        console.log(result.books)
         expect(result.books).toEqual(books)
     })
 })

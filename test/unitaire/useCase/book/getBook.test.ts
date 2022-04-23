@@ -10,7 +10,6 @@ describe('get book', () => {
     const getBook = new GetBook(mockbookProvider)
     it('getbook', async () => {
         const result = await getBook.execute(1)
-        
         expect(result).toEqual(book)
     })
 })

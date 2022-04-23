@@ -9,7 +9,6 @@ describe('get all categories', () => {
     const getCategories = new GetCategories(mockCategoriesProvider)
     it('getcategories', async () => {
         const result = await getCategories.execute()
-        console.log(result.categories)
         expect(result.categories).toEqual(categories)
     })
 })

@@ -7,7 +7,6 @@ describe('delete category', () => {
     const deleteCategory = new DeleteCategory(mockCategoryProvider)
     it('deletecategory', async () => {
         const {message} = await deleteCategory.execute(1)
-        console.log(message)
         expect(message).toBe('Le category a bien été supprimé')
     })
 })

@@ -10,7 +10,6 @@ describe('get category', () => {
     const getCategory = new GetCategory(mockCategoryProvider)
     it('getcategory', async () => {
         const result = await getCategory.execute(1)
-        
         expect(result).toEqual(category)
     })
 })

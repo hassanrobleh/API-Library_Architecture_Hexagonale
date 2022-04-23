@@ -9,8 +9,7 @@ describe('get user', () => {
     const mockUserProvider = new MockUserProvider()
     const getUser = new GetUser(mockUserProvider)
     it('getByEmail', async () => {
-        const result = await getUser.execute('test@test.fr')
-        
+        const result = await getUser.execute('test@test.fr')  
         expect(result).toEqual(user)
     })
 })

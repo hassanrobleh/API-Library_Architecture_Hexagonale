@@ -6,7 +6,6 @@ describe('get book', () => {
     const deleteBook = new DeleteBook(mockbookProvider)
     it('getbook', async () => {
         const { message } = await deleteBook.execute(1)
-        console.log(message)
         expect(message).toBe('Le book a bien été supprimé')
     })
 })
