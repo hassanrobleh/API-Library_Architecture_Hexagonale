@@ -32,14 +32,6 @@ jobs:
           name: Run tests
           command: npm test
   
-  deploy: # this can be any name you choose
-    docker:
-      - image: cimg/node:16.10
-    steps:
-      - attach_workspace:
-          at: build_and_test
-      - heroku/deploy-via-git:
-          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
