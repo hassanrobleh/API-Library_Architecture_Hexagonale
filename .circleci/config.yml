@@ -37,7 +37,7 @@ jobs:
       - image: cimg/node:16.10
     steps:
       - attach_workspace:
-          at: ~/project
+          at: build_and_test
       - heroku/deploy-via-git:
           force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
 workflows:
