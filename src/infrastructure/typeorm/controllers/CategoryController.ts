@@ -10,7 +10,7 @@ import {
 export const createCategory = async (req: Request,res: Response,next: NextFunction) => {
     try {
         const body = req.body
-        console.log(body)
+        // console.log(body)
         const result = await addCategoryAdapter.execute(body)
         return res.status(201).send(result)
     } catch (e) {
