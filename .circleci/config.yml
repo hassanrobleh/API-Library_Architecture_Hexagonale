@@ -32,17 +32,14 @@ jobs:
           name: Run tests
           command: npm test
   
-    - heroku/deploy-via-git:
-        force: true  # this parameter instructs the push to use a force flag when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
-        requires:
-          - build-and-test # only run deploy-via-git job if the build job has completed
-        filters:
-          branches:
-            # This sample config runs this job on any branch matching the regex below, however, it's more likely you want to only run this job on master.
-            only: /.*-heroku-deploy/  # Delete this line
-            # only: master  # Uncomment this line
-  
-
+  deploy: # this can be any name you choose
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - heroku/deploy-via-git:
+          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
@@ -53,4 +50,10 @@ workflows:
       - build-and-test
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
+      - deploy:
+          requires:
+            - build_and_test # only deploy if the build_and_test job has completed
+          filters:
+            branches:
+              only: main # only deploy when on main
       
