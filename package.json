@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev --respawn ./src/index.ts",
+    
     "dev-express": "cross-env NODE_ENV=dev nodemon src/server_Express/server.ts",
     "dev-typeorm": "ts-node-dev --respawn  ./src/infrastructure/typeorm/index.ts",
     "build": "tsc -p .",

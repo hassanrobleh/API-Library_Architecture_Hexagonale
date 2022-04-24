@@ -8,12 +8,12 @@ createConnection()
         await conn.runMigrations()
 
         const app = express()
-        const PORT = 3000
+        const port = process.env.PORT || 3000
 
         expressApp(app)
 
-        app.listen(PORT, () => {
-            console.log(`Server: Server is running at http://localhost:${PORT}`)
+        app.listen(port, () => {
+            console.log(`Server: Server is running at http://localhost:${port}`)
         })
     })
     .catch((err) => console.log(err))
