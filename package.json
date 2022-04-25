@@ -7,8 +7,7 @@
     },
     "main": "index.js",
     "scripts": {
-        "start": "ts-node src/index.ts",
-        "dev": "ts-node-dev --respawn ./src/index.ts",
+        "start": "ts-node ./src/infrastructure/typeorm/index.ts",
         "dev-typeorm": "ts-node-dev --respawn  ./src/infrastructure/typeorm/index.ts",
         "build": "tsc -p .",
         "test": "jest",
