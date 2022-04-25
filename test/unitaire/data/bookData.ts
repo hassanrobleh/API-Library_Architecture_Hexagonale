@@ -1,5 +1,4 @@
-import { BookDTO, IBook } from '../../../src/domain/Entities/Book'
-import Book from '../../../src/infrastructure/sequelize/models/Book'
+import { BookDTO } from '../../../src/domain/Entities/Book'
 
 export const book: BookDTO = {
     name: 'name',
