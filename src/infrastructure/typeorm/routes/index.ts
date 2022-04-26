@@ -5,9 +5,15 @@ import userRouter from './User.routes';
 
 const router = Router()
 
+router.get('/', (req, res) => {
+    res.json('Hello, Heroku ! 👋')
+})
+
 router.use('/book', bookRouter)
 router.use('/category', categoryRouter)
 router.use('/user', userRouter)
+
+
 
 export default router
 

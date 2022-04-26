@@ -13,8 +13,4 @@ export const expressApp = async (app) => {
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
     app.use(routes)
-
-    app.get('/', (req, res) => {
-        res.json('Hello, Heroku ! 👋')
-    })
 }
