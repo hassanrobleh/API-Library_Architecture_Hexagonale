@@ -12,10 +12,6 @@ createConnection()
 
         expressApp(app)
 
-        app.get('/', (req, res) => {
-            res.json('Hello, Heroku ! 👋')
-        })
-
         app.listen(port, () => {
             console.log(`Server: Server is running at http://localhost:${port}`)
         })
