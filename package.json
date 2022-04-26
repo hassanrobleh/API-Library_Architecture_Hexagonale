@@ -33,7 +33,9 @@
         "jsonwebtoken": "^8.5.1",
         "moment": "^2.29.1",
         "mysql2": "^2.3.3",
+        "path": "^0.12.7",
         "reflect-metadata": "^0.1.13",
+        "serve-favicon": "^2.5.0",
         "swagger-jsdoc": "^6.1.0",
         "swagger-ui-express": "^4.3.0",
         "typeorm": "^0.2.44"
