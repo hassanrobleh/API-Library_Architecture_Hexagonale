@@ -1,10 +1,10 @@
 {
     "type": "mysql",
-    "host": "localhost",
+    "host": "bv2rebwf6zzsv341.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
-    "username": "root",
-    "password": "root",
-    "database": "biblio",
+    "username": "ovjwu03j46q5wccq",
+    "password": "pukeaiu2lr69jr22",
+    "database": "bgw2tc484rsvg25d",
     "synchronize": true,
     "logging": false,
 
