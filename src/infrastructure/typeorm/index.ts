@@ -8,10 +8,6 @@ createConnection()
         await conn.runMigrations()
 
         const app = express()
-        
-        app.get('/', (req, res) => {
-            res.json('Hello, Heroku ! 👋')
-        })
 
         const port = process.env.PORT || 3000
 
