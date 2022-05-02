@@ -7,7 +7,7 @@ import { DeleteBook } from '../../../domain/Application/Book/UseCase/DeleteBook/
 
 export const provider = new BookProvider()
 
-const addBookAdapter = new AddBook(provider)
+
 const getBookAdapter = new GetBook(provider)
 const getBooksAdapter = new GetBooks(provider)
 const updateBookAdapter = new UpdateBook(provider)
